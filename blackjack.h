@@ -18,9 +18,9 @@ typedef struct Deck {
 } Deck;
 
 typedef struct Player {
-    Card main[11];
-    int number_of_cards;
+    Deck *hand;
     int score;
+    int number_of_cards;
 } Player;
 
 void initialize_deck(Deck **deck);
