@@ -24,3 +24,22 @@ void initialize_deck(Deck **deck) {
         }
     }
 }
+
+void deal_card(Deck **deck, Player *player) {
+    if (*deck == NULL) {
+        printf("No card left in the deck\n");
+        exit(1);
+    }
+
+    //Deal the top card from the deck
+    Deck *card_to_deal = *deck;
+    *deck = (*deck)->next;
+
+    //Add card to the player's hand
+    card_to_deal->next = player->hand;
+    player->hand = card_to_deal;
+
+    //Player details
+    player->score += card_to_deal->card->points;
+    player->number_of_cards++;
+}
