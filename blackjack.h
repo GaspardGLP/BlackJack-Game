@@ -24,5 +24,7 @@ typedef struct Player {
 } Player;
 
 void initialize_deck(Deck **deck);
+void deal_card(Deck **deck, Player *player);
+void display_player_hand(Player *player);
 
 #endif blackjack_h
