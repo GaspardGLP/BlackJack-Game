@@ -43,3 +43,15 @@ void deal_card(Deck **deck, Player *player) {
     player->score += card_to_deal->card->points;
     player->number_of_cards++;
 }
+
+void display_player_hand(Player *player) {
+    Deck *current = player->hand;
+
+    printf("Player hand:\n");
+
+    while (current) {
+        printf("- %s of %s (Points: %d)\n", current->card->value, current->card->color, current->card->points);
+        current = current->next;
+    }
+    printf("Total score: %d\n", player->score);
+}
