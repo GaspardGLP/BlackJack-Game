@@ -1,5 +1,6 @@
 #include "blackjack.h"
 
+// Creates a linked list of 52 cards
 void initialize_deck(Deck **deck) {
     char *values[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
     char *colors[] = {"Spades", "Hearts", "Diamonds", "Clubs"};
@@ -25,6 +26,7 @@ void initialize_deck(Deck **deck) {
     }
 }
 
+// Removes the first card from the deck and adds it to a player's hand
 void deal_card(Deck **deck, Player *player) {
     if (*deck == NULL) {
         printf("No card left in the deck\n");
@@ -44,6 +46,7 @@ void deal_card(Deck **deck, Player *player) {
     player->number_of_cards++;
 }
 
+// Prints all the cards in a player's hand
 void display_player_hand(Player *player) {
     Deck *current = player->hand;
 
@@ -54,4 +57,13 @@ void display_player_hand(Player *player) {
         current = current->next;
     }
     printf("Total score: %d\n", player->score);
+}
+
+// Releases all the memory used by the deck or hand
+void free_deck(Deck **deck) {
+    while (*deck) {
+        Deck *temp = *deck;
+        *deck = (*deck)->next;
+        free(temp);
+    }
 }
