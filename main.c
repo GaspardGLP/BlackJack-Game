@@ -7,22 +7,15 @@ int main() {
     Player player = {NULL, 0, 0};
     Player dealer = {NULL, 0, 0};
 
+    // Initialiser et mélanger le deck
     initialize_deck(&deck);
+    shuffle_deck(&deck);
 
-    printf("Initializing deck\n");
+    // Jouer une partie
+    play_game(&deck, &player, &dealer);
 
-    deal_card(&deck, &player);
-    deal_card(&deck, &player);
-    deal_card(&deck, &dealer);
-    deal_card(&deck, &dealer);
-
-    printf("\nPlayer's hand:\n");
-    display_player_hand(&player);
-
-    printf("\nDealer's hand:\n");
-    display_player_hand(&dealer);
-
-    free_deck(deck);
+    // Libérer la mémoire
+    free_deck(&deck);
 
     return 0;
 }
